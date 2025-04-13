@@ -9,6 +9,9 @@ class ShoppingViewModelFactory(
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ShoppingViewModel(repository) as T
+        if (modelClass.isAssignableFrom(ShoppingViewModel::class.java)) {
+            return ShoppingViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_name_asc"
+        android:title="Name (A to Z)" />
+    <item
+        android:id="@+id/sort_name_desc"
+        android:title="Name (Z to A)" />
+    <item
+        android:id="@+id/sort_quantity_asc"
+        android:title="Quantity (Low to High)" />
+    <item
+        android:id="@+id/sort_quantity_desc"
+        android:title="Quantity (High to Low)" />
+</menu>
