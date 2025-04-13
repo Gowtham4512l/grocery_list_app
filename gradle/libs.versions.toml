@@ -33,7 +33,6 @@ coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kodein-di = { group = "org.kodein.di", name = "kodein-di", version.ref = "kodein" }
 kodein-di-framework-android-x = { group = "org.kodein.di", name = "kodein-di-framework-android-x", version.ref = "kodein" }
-kodein-di-generic-jvm = { group = "org.kodein.di", name = "kodein-di-generic-jvm", version.ref = "kodein" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

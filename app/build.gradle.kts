@@ -16,6 +16,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] =
+                    "$projectDir/schemas"
+            }
+        }
     }
 
     buildTypes {
@@ -61,7 +68,6 @@ dependencies {
     // Kodein for dependency injection
     implementation(libs.kodein.di)
     implementation(libs.kodein.di.framework.android.x)
-    implementation(libs.kodein.di.generic.jvm)
 
     // Testing
     testImplementation(libs.junit)
