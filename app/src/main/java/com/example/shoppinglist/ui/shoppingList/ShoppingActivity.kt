@@ -37,17 +37,14 @@ class ShoppingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Make sure status bar doesn't overlap content
         WindowCompat.setDecorFitsSystemWindows(window, true)
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_shopping)
 
-        // Set up toolbar
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        // Initialize ViewModel with application repository
         factory = ShoppingViewModelFactory(ShoppingApp.repository)
         viewModel = ViewModelProvider(this, factory)[ShoppingViewModel::class.java]
 
@@ -55,17 +52,14 @@ class ShoppingActivity : AppCompatActivity() {
         observeShoppingItems()
         setUpFab()
 
-        // Set proper insets for edge-to-edge display - removing excessive top padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val displayCutout = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
 
-            // Only apply left, right and bottom padding
             val leftPadding = maxOf(systemBars.left, displayCutout.left)
             val rightPadding = maxOf(systemBars.right, displayCutout.right)
             val bottomPadding = maxOf(systemBars.bottom, displayCutout.bottom)
 
-            // Set zero top padding - let the AppBarLayout handle top insets
             v.setPadding(leftPadding, 0, rightPadding, bottomPadding)
             insets
         }
@@ -74,7 +68,6 @@ class ShoppingActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_shopping, menu)
 
-        // Set up search functionality
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
 
@@ -164,7 +157,6 @@ class ShoppingActivity : AppCompatActivity() {
     }
 
     private fun showAddItemDialog() {
-        // Use BottomSheetDialog instead of AlertDialog for better UX
         val bottomSheetDialog = createAddItemBottomSheet()
         bottomSheetDialog.show()
     }
@@ -174,7 +166,6 @@ class ShoppingActivity : AppCompatActivity() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_shoping_item, null)
         dialog.setContentView(dialogView)
 
-        // Make dialog modal to prevent interaction with items behind it
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
 
